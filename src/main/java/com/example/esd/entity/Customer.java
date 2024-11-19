@@ -2,6 +2,7 @@ package com.example.esd.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -20,12 +21,6 @@ public class Customer {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email", nullable = false, unique = true)
-    private String email;
-
-    @Column(name = "password", nullable = false)
-    private String password;
-
     @Column(name = "address")
     private String address;
 
@@ -33,5 +28,17 @@ public class Customer {
     private String city;
 
     @Column(name = "pincode")
-    private String pincode;
+    private Long pincode;
+
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @Column(name="password", nullable = false)
+    private String password;
+
+    @Column(name="created_on")
+    private LocalDateTime createdOn;
+
+    @Column(name="updated_on")
+    private LocalDateTime updatedOn;
 }

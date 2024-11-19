@@ -4,9 +4,11 @@ import com.example.esd.dto.CustomerRequest;
 import com.example.esd.entity.Customer;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class CustomerMapper {
-    public Customer toEntity(CustomerRequest request) {
+    public Customer toEntity(CustomerRequest.CustomerCreateRequest request) {
         return Customer.builder()
                 .firstName(request.firstName())
                 .lastName(request.lastName())
@@ -15,6 +17,15 @@ public class CustomerMapper {
                 .address(request.address())
                 .city(request.city())
                 .pincode(request.pincode())
+                .createdOn(LocalDateTime.now())
+                .updatedOn(LocalDateTime.now())
+                .build();
+    }
+
+    public Customer toEntity(CustomerRequest.CustomerLoginRequest request) {
+        return Customer.builder()
+                .email(request.email())
+                .password(request.password())
                 .build();
     }
 }
