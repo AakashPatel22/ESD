@@ -43,6 +43,9 @@ public class ProductService {
         }
         return false;
     }
-    
+
+    public List<Product> getTop2Products() {
+        return repo.findTop2Products();
+    }
 }
 
